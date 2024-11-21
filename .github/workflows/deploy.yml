@@ -1,0 +1,31 @@
+name: Deploy to Compute Engine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Setup SSH Key
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      # Deploy to Compute Engine
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no <USERNAME>@<COMPUTE_ENGINE_IP> << 'EOF'
+          cd /home/c183b4ky4122/mid-project-cloud
+          git pull origin main
+          npm install # Opsional, untuk proyek Node.js
+          sudo systemctl restart nginx
+          EOF

@@ -20,6 +20,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
+      # Debugging: Check if SSH Agent is working
+      - name: Check SSH Agent
+        run: |
+          echo $SSH_AUTH_SOCK
+          ssh-add -l
+
       # Deploy to Compute Engine
       - name: Deploy to Server
         run: |

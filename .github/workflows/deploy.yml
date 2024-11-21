@@ -23,7 +23,7 @@ jobs:
       # Deploy to Compute Engine
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no <USERNAME>@<COMPUTE_ENGINE_IP> << 'EOF'
+          ssh -o StrictHostKeyChecking=no c183b4ky4122@34.128.71.208 << 'EOF'
           cd /home/c183b4ky4122/mid-project-cloud
           git pull origin main
           npm install # Opsional, untuk proyek Node.js

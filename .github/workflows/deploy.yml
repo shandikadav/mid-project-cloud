@@ -18,13 +18,13 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-private-key: ${{secrets.SSH_KEY}}
 
       # Debugging: Check if SSH Agent is working
       - name: Check SSH Agent
         run: |
           echo $SSH_AUTH_SOCK
-          # ssh-add -l
+          ssh-add -l
 
       # Deploy to Compute Engine
       - name: Deploy to Server

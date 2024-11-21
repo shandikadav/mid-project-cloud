@@ -24,7 +24,7 @@ jobs:
       - name: Check SSH Agent
         run: |
           echo $SSH_AUTH_SOCK
-          ssh-add -l
+          # ssh-add -l
 
       # Deploy to Compute Engine
       - name: Deploy to Server
